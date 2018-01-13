@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include <ctime>
 using namespace std;
 
 class Clock
@@ -20,7 +21,11 @@ private:
 public:
     void getTime()
     {
-        cout<<"son las"<<endl;
+        time_t   t,i;
+        char *p;
+        i = time (&t);
+        p = ctime (&i);
+        cout<<"son las "<<p<<endl;
     }
     
     static Clock* getInstance()
@@ -34,7 +39,7 @@ public:
     
     void deleteInstance()
     {
-        
+        delete instance;
     }
 };
 
@@ -46,8 +51,10 @@ int main()
     instance1->getTime();
     Clock * instance2 = Clock::getInstance();
     instance2->getTime();
-    cout<<instance1<<instance2<<endl;
+    cout<<instance1<<endl;
+    cout<<instance2<<endl;
+    instance1->deleteInstance();
+    instance2->deleteInstance();
     
-    delete instance1;
     return 0;
 }

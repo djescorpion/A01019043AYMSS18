@@ -1,0 +1,23 @@
+﻿@startuml
+
+
+class Receptor{
+accion();
+}
+class Cliente{
+}
+class ConcreteCommand{
+estado
+ejecutar();
+}
+class InterfaceCommand{
+ejecutar();
+}
+class Invocador{
+}
+Cliente -> Receptor
+Receptor <- ConcreteCommand
+Cliente ..> ConcreteCommand
+ConcreteCommand ..|> InterfaceCommand
+Invocador o.. InterfaceCommand
+@end
